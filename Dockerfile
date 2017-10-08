@@ -22,4 +22,4 @@ RUN cd /hashcat && \
 
 #Add link for binary
 RUN ln -s /hashcat/${HASHCAT_VERSION}/hashcat64.bin /usr/bin/hashcat
-RUN ln -s /hashcat/hashcat-utils-${HASHCAT_UTILS_VERSION}/cap2hccapx.bin /usr/bin/cap2hccapx
+RUN ln -s /hashcat/hashcat-utils-${HASHCAT_UTILS_VERSION}/bin/cap2hccapx.bin /usr/bin/cap2hccapx
