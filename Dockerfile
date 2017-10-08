@@ -19,7 +19,7 @@ ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_P
 ####################################################################################
 
 ENV HASHCAT_VERSION        hashcat-3.6.0
-ENV HASHCAT_UTILS_VERSION  hashcat-utils-1.8
+ENV HASHCAT_UTILS_VERSION  1.8
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
@@ -34,15 +34,10 @@ RUN cd /hashcat && \
     rm ${HASHCAT_VERSION}.7z
 
 RUN cd /hashcat && \
-    wget https://github.com/hashcat/hashcat-utils/releases/download/v1.8/${HASHCAT_UTILS_VERSION}.7z && \
-    7zr x ${HASHCAT_UTILS_VERSION}.7z && \
-    rm ${HASHCAT_UTILS_VERSION}.7z
+    wget https://github.com/hashcat/hashcat-utils/releases/download/v${HASHCAT_UTILS_VERSION}/hashcat-utils-${HASHCAT_UTILS_VERSION}.7z && \
+    7zr x hashcat-utils-${HASHCAT_UTILS_VERSION}.7z && \
+    rm hashcat-utils-${HASHCAT_UTILS_VERSION}.7z
 
 #Add link for binary
 RUN ln -s /hashcat/${HASHCAT_VERSION}/hashcat64.bin /usr/bin/hashcat
-RUN ln -s /hashcat/${HASHCAT_UTILS_VERSION}/cap2hccapx.bin /usr/bin/cap2hccapx
-
-#EXPOSE 9000
-
-#CMD ["/bin/bash""]
-
+RUN ln -s /hashcat/hashcat-utils-${HASHCAT_UTILS_VERSION}/cap2hccapx.bin /usr/bin/cap2hccapx
