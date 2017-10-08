@@ -11,12 +11,12 @@ RUN mkdir /hashcat
 
 #Install and configure hashcat
 RUN cd /hashcat && \
-    wget https://hashcat.net/files/${HASHCAT_VERSION}.7z && \
+    wget --no-check-certificate https://hashcat.net/files/${HASHCAT_VERSION}.7z && \
     7zr x ${HASHCAT_VERSION}.7z && \
     rm ${HASHCAT_VERSION}.7z
 
 RUN cd /hashcat && \
-    wget https://github.com/hashcat/hashcat-utils/releases/download/v${HASHCAT_UTILS_VERSION}/hashcat-utils-${HASHCAT_UTILS_VERSION}.7z && \
+    wget --no-check-certificate https://github.com/hashcat/hashcat-utils/releases/download/v${HASHCAT_UTILS_VERSION}/hashcat-utils-${HASHCAT_UTILS_VERSION}.7z && \
     7zr x hashcat-utils-${HASHCAT_UTILS_VERSION}.7z && \
     rm hashcat-utils-${HASHCAT_UTILS_VERSION}.7z
 
