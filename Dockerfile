@@ -1,6 +1,6 @@
 FROM cwpearson/opencl2.0-intel-cpu
 
-ENV HASHCAT_VERSION        hashcat-3.6.0
+ENV HASHCAT_VERSION        hashcat-4.0.1
 ENV HASHCAT_UTILS_VERSION  1.8
 
 # Update & install packages for installing hashcat
