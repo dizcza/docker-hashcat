@@ -18,7 +18,7 @@ ENV PATH /usr/local/nvidia/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
 ####################################################################################
 
-ENV HASHCAT_VERSION        hashcat-3.6.0
+ENV HASHCAT_VERSION        hashcat-4.0.1
 ENV HASHCAT_UTILS_VERSION  1.8
 
 # Update & install packages for installing hashcat
