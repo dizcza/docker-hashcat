@@ -1,6 +1,6 @@
 FROM cwpearson/opencl2.0-intel-cpu
 
-ENV HASHCAT_VERSION        hashcat-4.0.1
+ENV HASHCAT_VERSION        hashcat-3.6.0
 ENV HASHCAT_UTILS_VERSION  1.8
 
 # Update & install packages for installing hashcat
@@ -11,7 +11,7 @@ RUN mkdir /hashcat
 
 #Install and configure hashcat: it's either the latest release or in legacy files
 RUN cd /hashcat && \
-    wget --no-check-certificate https://hashcat.net/files/${HASHCAT_VERSION}.7z && \
+    wget --no-check-certificate https://hashcat.net/files_legacy/${HASHCAT_VERSION}.7z && \
     7zr x ${HASHCAT_VERSION}.7z && \
     rm ${HASHCAT_VERSION}.7z
 
