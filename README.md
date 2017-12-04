@@ -15,10 +15,8 @@ Otherwise, use standalone tag `:nvidia-full` (~2.2 Gb):
  
  `docker pull dizcza/docker-hashcat:nvidia-full`
 
-You may see some [warnings](https://github.com/hashcat/hashcat/issues/1360). Ignore them.
 
-
-# Intel CPU
+## Intel CPU
 
 For those who don't have GPUs, use `:intel-cpu` tag (suitable for AWS free tier instances):
 
