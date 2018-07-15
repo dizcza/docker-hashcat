@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 
