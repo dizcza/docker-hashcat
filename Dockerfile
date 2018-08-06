@@ -32,7 +32,7 @@ RUN mkdir /hashcat
 
 #Install and configure hashcat: it's either the latest release or in legacy files
 RUN cd /hashcat && \
-    wget --no-check-certificate https://hashcat.net/files_legacy/${HASHCAT_VERSION}.7z && \
+    wget --no-check-certificate https://hashcat.net/files/${HASHCAT_VERSION}.7z && \
     7zr x ${HASHCAT_VERSION}.7z && \
     rm ${HASHCAT_VERSION}.7z
 
