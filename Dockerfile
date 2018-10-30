@@ -21,8 +21,8 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ################################ end nvidia opencl driver ################################
 
-ENV HASHCAT_VERSION        hashcat-3.6.0
-ENV HASHCAT_UTILS_VERSION  1.8
+ENV HASHCAT_VERSION        hashcat-5.0.0
+ENV HASHCAT_UTILS_VERSION  1.9
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
