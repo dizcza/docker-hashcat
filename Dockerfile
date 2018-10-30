@@ -33,8 +33,8 @@ ENV OCL_INC /opt/intel/opencl/include
 ENV OCL_LIB /opt/intel/opencl-1.2-6.4.0.25/lib64
 ENV LD_LIBRARY_PATH $OCL_LIB:$LD_LIBRARY_PATH
 
-ENV HASHCAT_VERSION        hashcat-3.6.0
-ENV HASHCAT_UTILS_VERSION  1.8
+ENV HASHCAT_VERSION        hashcat-5.0.0
+ENV HASHCAT_UTILS_VERSION  1.9
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
