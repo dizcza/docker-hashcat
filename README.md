@@ -3,14 +3,11 @@
 [![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat.svg)](https://microbadger.com/images/dizcza/docker-hashcat "Get your own version badge on microbadger.com")
 [![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat.svg)](https://microbadger.com/images/dizcza/docker-hashcat "Get your own image badge on microbadger.com")
 
-[![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat:nvidia-full.svg)](https://microbadger.com/images/dizcza/docker-hashcat:nvidia-full "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:nvidia-full.svg)](https://microbadger.com/images/dizcza/docker-hashcat:nvidia-full "Get your own image badge on microbadger.com")
-
 [![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat:intel-cpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-cpu "Get your own version badge on microbadger.com")
 [![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:intel-cpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-cpu "Get your own image badge on microbadger.com")
 
 
-[Hashcat](https://hashcat.net/hashcat/) with [Hashcat-utils](https://github.com/hashcat/hashcat-utils/) on Ubuntu 16.04 OpenCL 1.2 for Nvidia GPUs (tags `:latest`, `:nvidia-full`) and Intel CPU (`:intel-cpu`).
+[Hashcat](https://hashcat.net/hashcat/) with [Hashcat-utils](https://github.com/hashcat/hashcat-utils/) on Ubuntu 18.04 OpenCL 1.2 for Nvidia GPUs (`:latest`) and Intel CPU (`:intel-cpu`).
 
 "_Why OpenCL 1.2 and not 2.0?_" and "_Does hashcat not actually use CUDA for Nvidia cards?_" see [here](https://hashcat.net/forum/thread-6712-post-35830.html).
 
@@ -24,9 +21,7 @@ hashcat -b
 
 ## Nvidia GPU
 
-If you've installed and configured nvidia-opencl driver on your host machine, use `:latest` tag. Otherwise, use standalone `:nvidia-full` tag:
- 
- `docker pull dizcza/docker-hashcat:nvidia-full`
+ `docker pull dizcza/docker-hashcat:latest`
 
 
 ## Intel CPU
