@@ -7,9 +7,7 @@
 [![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:intel-cpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-cpu "Get your own image badge on microbadger.com")
 
 
-[Hashcat](https://hashcat.net/hashcat/) with [Hashcat-utils](https://github.com/hashcat/hashcat-utils/) on Ubuntu 18.04 OpenCL 1.2 for Nvidia GPUs (`:latest`) and Intel CPU (`:intel-cpu`).
-
-"_Why OpenCL 1.2 and not 2.0?_" and "_Does hashcat not actually use CUDA for Nvidia cards?_" see [here](https://hashcat.net/forum/thread-6712-post-35830.html).
+[Hashcat](https://hashcat.net/hashcat/) with hashcat utils on Ubuntu 18.04 OpenCL for Nvidia GPUs (`:latest`) and Intel CPU (`:intel-cpu`).
 
 ```
 docker pull dizcza/docker-hashcat
