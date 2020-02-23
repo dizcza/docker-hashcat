@@ -1,5 +1,7 @@
 FROM ubuntu:18.04
 
+LABEL maintainer="Danylo Ulianych"
+
 RUN apt-get update && apt-get install -y alien clinfo
 
 # Install Intel OpenCL driver
