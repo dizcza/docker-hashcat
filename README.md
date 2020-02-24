@@ -27,3 +27,14 @@ hashcat -b
 For those who don't have GPUs, use `:intel-cpu` tag (suitable for AWS free tier instances):
 
  `docker pull dizcza/docker-hashcat:intel-cpu`
+
+
+## Additional Hashcat utils
+
+Along with the hashcat, the following utility packages are installed:
+
+* [hashcat-utils](https://github.com/hashcat/hashcat-utils) for converting raw Airodump to HCCAPX capture format; info `cap2hccapx -h`
+* [hcxtools](https://github.com/zerbea/hcxtools) for inspecting, filtering, and converting capture files;
+* [hcxdumptool](https://github.com/ZerBea/hcxdumptool) for capturing packets from wlan devices in any format you might think of; info `hcxdumptool -h`
+* [kwprocessor](https://github.com/hashcat/kwprocessor) for creating advanced keyboard-walk password candidates; info `kwp -h`
+
