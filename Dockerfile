@@ -20,8 +20,8 @@ RUN curl -O $INTEL_OPENCL_URL; \
 
 ENV HASHCAT_VERSION        hashcat-5.1.0
 ENV HASHCAT_UTILS_VERSION  1.9
-ENV HCXTOOLS_VERSION       5.1.4
-ENV HCXDUMPTOOL_VERSION    5.1.4
+ENV HCXTOOLS_VERSION       5.3.0
+ENV HCXDUMPTOOL_VERSION    6.0.1
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
