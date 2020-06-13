@@ -21,48 +21,26 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ################################ end nvidia opencl driver ################################
 
-ENV HASHCAT_VERSION        hashcat-5.1.0
-ENV HASHCAT_UTILS_VERSION  1.9
-ENV HCXTOOLS_VERSION       5.3.0
-ENV HCXDUMPTOOL_VERSION    6.0.1
+ENV HASHCAT_VERSION        master
+ENV HASHCAT_UTILS_VERSION  v1.9
+ENV HCXTOOLS_VERSION       6.0.2
+ENV HCXDUMPTOOL_VERSION    6.0.6
+ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
-    apt-get install -y wget p7zip make build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev
+    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev
 
-RUN mkdir /hashcat
+WORKDIR /root
 
-WORKDIR /hashcat
-RUN wget --no-check-certificate https://hashcat.net/files/${HASHCAT_VERSION}.7z && \
-    7zr x ${HASHCAT_VERSION}.7z && \
-    rm ${HASHCAT_VERSION}.7z
+RUN git clone https://github.com/hashcat/hashcat.git && cd hashcat && git checkout ${HASHCAT_VERSION} && make install -j4
 
-RUN wget --no-check-certificate https://github.com/hashcat/hashcat-utils/releases/download/v${HASHCAT_UTILS_VERSION}/hashcat-utils-${HASHCAT_UTILS_VERSION}.7z && \
-    7zr x hashcat-utils-${HASHCAT_UTILS_VERSION}.7z && \
-    rm hashcat-utils-${HASHCAT_UTILS_VERSION}.7z
+RUN git clone https://github.com/hashcat/hashcat-utils.git && cd hashcat-utils/src && git checkout ${HASHCAT_UTILS_VERSION} && make
+RUN ln -s /root/hashcat-utils/src/cap2hccapx.bin /usr/bin/cap2hccapx
 
-WORKDIR /hashcat
-RUN wget --no-check-certificate https://github.com/ZerBea/hcxtools/archive/${HCXTOOLS_VERSION}.tar.gz && \
-    tar xfz ${HCXTOOLS_VERSION}.tar.gz && \
-    rm ${HCXTOOLS_VERSION}.tar.gz
-WORKDIR hcxtools-${HCXTOOLS_VERSION}
-RUN make install
+RUN git clone https://github.com/ZerBea/hcxtools.git && cd hcxtools && git checkout ${HCXTOOLS_VERSION} && make install
 
-WORKDIR /hashcat
-RUN wget --no-check-certificate https://github.com/ZerBea/hcxdumptool/archive/${HCXDUMPTOOL_VERSION}.tar.gz && \
-    tar xfz ${HCXDUMPTOOL_VERSION}.tar.gz && \
-    rm ${HCXDUMPTOOL_VERSION}.tar.gz
-WORKDIR hcxdumptool-${HCXDUMPTOOL_VERSION}
-RUN make install
+RUN git clone https://github.com/ZerBea/hcxdumptool.git && cd hcxdumptool && git checkout ${HCXDUMPTOOL_VERSION} && make install
 
-WORKDIR /hashcat
-# commit 49059f3 on Jun 19, 2018
-RUN git clone https://github.com/hashcat/kwprocessor.git
-WORKDIR kwprocessor
-RUN make
-WORKDIR /hashcat
-
-#Add link for binary
-RUN ln -s /hashcat/${HASHCAT_VERSION}/hashcat64.bin /usr/bin/hashcat
-RUN ln -s /hashcat/hashcat-utils-${HASHCAT_UTILS_VERSION}/bin/cap2hccapx.bin /usr/bin/cap2hccapx
-RUN ln -s /hashcat/kwprocessor/kwp /usr/bin/kwp
+RUN git clone https://github.com/hashcat/kwprocessor.git && cd kwprocessor && git checkout ${HCXKEYS_VERSION} && make
+RUN ln -s /root/kwprocessor/kwp /usr/bin/kwp
