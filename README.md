@@ -26,16 +26,24 @@ hashcat -b
 
 `docker pull dizcza/docker-hashcat:latest`
 
-The `:latest` tag is for Nvidia GPUs.
+The `:latest` tag is for GPUs. It includes both CUDA and OpenCL backends. Hashcat will pick CUDA, if your hardware supports it, because CUDA is faster than OpenCL (see [thread](https://hashcat.net/forum/thread-9303.html)). If your compute device does not support CUDA, hashcat will fall back to OpenCL backend.
 
 
-## intel-cpu
+### cuda
+
+`docker pull dizcza/docker-hashcat:cuda`
+
+Recommended for Nvidia GPUs.
+
+
+### intel-cpu
 
 `docker pull dizcza/docker-hashcat:intel-cpu`
 
 For those who don't have GPUs, use `:intel-cpu` tag (suitable for AWS free tier instances):
 
-## pocl
+
+### pocl
 
 `docker pull dizcza/docker-hashcat:pocl`
 
@@ -43,11 +51,13 @@ An alternative to `:intel-cpu` tag, the `:pocl` tag provides open-source (but no
 
 Try `:pocl` tag if `:intel-cpu` does not work for you.
 
+
 ## Deprecated tags
 
 ### nvidia-full
 
 `:nvidia-full` is an old build of the `:latest` tag. This tag is deprecated.
+
 
 ## Hashcat utils
 
