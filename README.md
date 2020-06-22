@@ -1,7 +1,10 @@
 [![Docker Hub](http://dockeri.co/image/dizcza/docker-hashcat)](https://hub.docker.com/r/dizcza/docker-hashcat/)
 
-[![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat.svg)](https://microbadger.com/images/dizcza/docker-hashcat "Nvidia GPU")
-[![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat.svg)](https://microbadger.com/images/dizcza/docker-hashcat "Nvidia GPU")
+[![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat.svg)](https://microbadger.com/images/dizcza/docker-hashcat "GPU")
+[![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat.svg)](https://microbadger.com/images/dizcza/docker-hashcat "GPU")
+
+[![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat:cuda.svg)](https://microbadger.com/images/dizcza/docker-hashcat:cuda "Nvidia GPU")
+[![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:cuda.svg)](https://microbadger.com/images/dizcza/docker-hashcat:cuda "Nvidia GPU")
 
 [![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat:intel-cpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-cpu "Intel CPU")
 [![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:intel-cpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-cpu "Intel CPU")
@@ -14,9 +17,17 @@
 
 ```
 docker pull dizcza/docker-hashcat
-nvidia-docker run -it dizcza/docker-hashcat /bin/bash
 
-# run hashcat bechmark inside the docker container
+nvidia-docker run -it dizcza/docker-hashcat /bin/bash
+```
+
+Then inside the docker container run
+
+```
+# list the available CUDA and OpenCL interfaces
+hashcat -I
+
+# run hashcat bechmark
 hashcat -b
 ```
 
@@ -26,14 +37,14 @@ hashcat -b
 
 `docker pull dizcza/docker-hashcat:latest`
 
-The `:latest` tag is for GPUs. It includes both CUDA and OpenCL backends. Hashcat will pick CUDA, if your hardware supports it, because CUDA is faster than OpenCL (see [thread](https://hashcat.net/forum/thread-9303.html)). If your compute device does not support CUDA, hashcat will fall back to OpenCL backend.
+The `:latest` tag is for GPUs. It includes the default OpenCL backed for all types of GPU, including Nvidia.
 
 
 ### cuda
 
 `docker pull dizcza/docker-hashcat:cuda`
 
-Recommended for Nvidia GPUs.
+Recommended for Nvidia GPUs. If you have any issues with running this container with Nvidia GPU, please drop a comment in this [issue](https://github.com/dizcza/docker-hashcat/issues/6).
 
 
 ### intel-cpu
