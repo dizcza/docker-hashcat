@@ -37,8 +37,7 @@ hashcat -b
 
 `docker pull dizcza/docker-hashcat:latest`
 
-The `:latest` tag is for GPUs. It includes the default OpenCL backed for all types of GPU, including Nvidia.
-
+The `:latest` tag is for GPUs. It includes both CUDA and (default) OpenCL backends. Hashcat will pick CUDA, if your hardware supports it, because CUDA is faster than OpenCL (see [thread](https://hashcat.net/forum/thread-9303.html)). If your compute device does not support CUDA, hashcat will fall back to OpenCL backend.
 
 ### cuda
 
