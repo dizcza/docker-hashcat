@@ -15,7 +15,7 @@ RUN git clone https://github.com/pocl/pocl.git && cd pocl && git checkout ${POCL
 
 ##################### end POCL driver installation #####################
 
-ENV HASHCAT_VERSION        master
+ENV HASHCAT_VERSION        v6.1.0
 ENV HASHCAT_UTILS_VERSION  v1.9
 ENV HCXTOOLS_VERSION       6.0.2
 ENV HCXDUMPTOOL_VERSION    6.0.6
