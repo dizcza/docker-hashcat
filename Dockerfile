@@ -4,7 +4,7 @@ LABEL com.nvidia.volumes.needed="nvidia_driver"
 
 ############################### end nvidia cuda driver ################################
 
-ENV HASHCAT_VERSION        master
+ENV HASHCAT_VERSION        v6.1.0
 ENV HASHCAT_UTILS_VERSION  v1.9
 ENV HCXTOOLS_VERSION       6.0.2
 ENV HCXDUMPTOOL_VERSION    6.0.6
