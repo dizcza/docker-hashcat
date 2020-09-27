@@ -9,6 +9,9 @@
 [![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat:intel-cpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-cpu "Intel CPU")
 [![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:intel-cpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-cpu "Intel CPU")
 
+[![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat:intel-gpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-gpu "Intel NEO GPU")
+[![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:intel-gpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-gpu "Intel NEO GPU")
+
 [![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat:pocl.svg)](https://microbadger.com/images/dizcza/docker-hashcat:pocl "POCL")
 [![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:pocl.svg)](https://microbadger.com/images/dizcza/docker-hashcat:pocl "POCL")
 
@@ -52,6 +55,11 @@ Recommended for Nvidia GPUs. If you have any issues with running this container 
 
 For those who don't have GPUs, use `:intel-cpu` tag (suitable for AWS free tier instances):
 
+### intel-gpu
+
+`docker run -it --device /dev/dri:/dev/dri dizcza/docker-hashcat:intel-gpu`
+
+Intel NEO OpenCL driver (suitable for the majority of laptops with an embedded Intel graphics card). 
 
 ### pocl
 
@@ -77,4 +85,9 @@ Along with the hashcat, the following utility packages are installed:
 * [hcxtools](https://github.com/zerbea/hcxtools) for inspecting, filtering, and converting capture files;
 * [hcxdumptool](https://github.com/ZerBea/hcxdumptool) for capturing packets from wlan devices in any format you might think of; info `hcxdumptool -h`
 * [kwprocessor](https://github.com/hashcat/kwprocessor) for creating advanced keyboard-walk password candidates; info `kwp -h`
+
+
+## FAQ
+
+* Warning "Device #1: Unstable OpenCL driver detected!" can be suppressed by adding `--force` flag to the hashcat command (f.i., `hashcat -m2500 -b --force`).
 
