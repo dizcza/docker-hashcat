@@ -1,24 +1,7 @@
-FROM ubuntu:18.04
+FROM intelopencl/intel-opencl:ubuntu-18.04-ppa
 
 LABEL maintainer="Danylo Ulianych"
 
-RUN apt-get update && apt-get install -y alien clinfo
-
-# Install Intel OpenCL driver
-#ENV INTEL_OPENCL_URL=http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/13793/l_opencl_p_18.1.0.013.tgz
-ENV INTEL_OPENCL_URL=http://registrationcenter-download.intel.com/akdlm/irc_nas/9019/opencl_runtime_16.1.1_x64_ubuntu_6.4.0.25.tgz
-
-RUN mkdir -p /tmp/opencl-driver-intel
-WORKDIR /tmp/opencl-driver-intel
-RUN curl -O $INTEL_OPENCL_URL; \
-    tar -xzf $(basename $INTEL_OPENCL_URL); \
-    for i in $(basename $INTEL_OPENCL_URL .tgz)/rpm/*.rpm; do alien --to-deb $i; done; \
-    dpkg -i *.deb; \
-    mkdir -p /etc/OpenCL/vendors; \
-    echo /opt/intel/*/lib64/libintelocl.so > /etc/OpenCL/vendors/intel.icd; \
-    rm -rf *
-
-############### end Intel OpenCL driver installation ###############
 
 ENV HASHCAT_VERSION        v6.1.1
 ENV HASHCAT_UTILS_VERSION  v1.9
@@ -29,6 +12,7 @@ ENV HCXKEYS_VERSION        master
 # Update & install packages for installing hashcat
 RUN apt-get update && \
     apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev
+RUN apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
 
