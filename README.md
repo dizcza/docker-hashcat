@@ -67,7 +67,7 @@ Intel NEO OpenCL driver (suitable for the majority of laptops with an embedded I
 
 An alternative to `:intel-cpu` tag, the `:pocl` tag provides open-source (but not officially supported by HashCat) implementation of OpenCL, which you can find in `pocl-opencl-icd` linux package (usually, outdated). For more information about using POCL in hashcat refer to the [discussion](https://github.com/hashcat/hashcat/issues/2398#issuecomment-628732757).
 
-Try `:pocl` tag if `:intel-cpu` does not work for you.
+Try `:pocl` tag if no other tag worked for you.
 
 
 ## Deprecated tags
@@ -76,6 +76,19 @@ Try `:pocl` tag if `:intel-cpu` does not work for you.
 
 `:nvidia-full` is an old build of the `:latest` tag. This tag is deprecated.
 
+
+## Benchmark
+
+Benchmark command: `hashcat -m2500 -b`
+
+| Tag(s) | Device | Speed, H/s |
+|---|----------|-----------|
+|latest, cuda| GeForce GTX 1080 Ti | 603500 |
+|intel-gpu| Intel UHD Graphics 620 | 8240 |
+|intel-cpu| Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz | 11009 |
+|pocl| pthread-Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz | 7647 |
+
+If you have a laptop with an embedded Intel GPU card, you can combine `intel-cpu` and `intel-gpu` installations manually to utilize both CPU and GPU, increasing the speed up to 15000 H/s.
 
 ## Hashcat utils
 
