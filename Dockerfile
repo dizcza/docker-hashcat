@@ -5,7 +5,7 @@ LABEL maintainer="Danylo Ulianych"
 RUN apt-get update && \
     apt-get install -y git clang-9 libclang-9-dev build-essential ocl-icd-libopencl1 cmake git pkg-config make ninja-build ocl-icd-libopencl1 ocl-icd-dev ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils
 
-ENV POCL_VERSION           v1.5
+ENV POCL_VERSION           v1.6
 
 WORKDIR /root
 
