@@ -16,7 +16,7 @@
 [![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:pocl.svg)](https://microbadger.com/images/dizcza/docker-hashcat:pocl "POCL")
 
 
-[Hashcat](https://hashcat.net/hashcat/) with hashcat utils on Ubuntu 18.04 OpenCL for Nvidia GPUs (`:latest`) and Intel CPU (`:intel-cpu`).
+[Hashcat](https://hashcat.net/hashcat/) with hashcat utils on Ubuntu 18.04 for Nvidia GPUs (`:latest`) and Intel CPUs (`:intel-cpu`).
 
 ```
 docker pull dizcza/docker-hashcat
