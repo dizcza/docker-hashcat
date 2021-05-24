@@ -4,7 +4,7 @@ LABEL com.nvidia.volumes.needed="nvidia_driver"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ocl-icd-libopencl1 \
-        clinfo && \
+        clinfo pkg-config && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /etc/OpenCL/vendors && \
@@ -23,8 +23,8 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
 ENV HASHCAT_VERSION        v6.2.1
 ENV HASHCAT_UTILS_VERSION  v1.9
-ENV HCXTOOLS_VERSION       6.1.5
-ENV HCXDUMPTOOL_VERSION    6.1.6
+ENV HCXTOOLS_VERSION       6.2.0
+ENV HCXDUMPTOOL_VERSION    6.2.0
 ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
