@@ -5,13 +5,13 @@ LABEL maintainer="Danylo Ulianych"
 
 ENV HASHCAT_VERSION        v6.2.1
 ENV HASHCAT_UTILS_VERSION  v1.9
-ENV HCXTOOLS_VERSION       6.1.5
-ENV HCXDUMPTOOL_VERSION    6.1.6
+ENV HCXTOOLS_VERSION       6.2.0
+ENV HCXDUMPTOOL_VERSION    6.2.0
 ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
-    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev
+    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev pkg-config
 RUN apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
