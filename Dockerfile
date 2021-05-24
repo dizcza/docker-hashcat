@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 LABEL maintainer="Danylo Ulianych"
 
-RUN apt-get update && apt-get install -y alien clinfo
+RUN apt-get update && apt-get install -y alien clinfo pkg-config
 
 # Install Intel OpenCL driver
 #ENV INTEL_OPENCL_URL=http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/13793/l_opencl_p_18.1.0.013.tgz
@@ -22,8 +22,8 @@ RUN curl -O $INTEL_OPENCL_URL; \
 
 ENV HASHCAT_VERSION        v6.2.1
 ENV HASHCAT_UTILS_VERSION  v1.9
-ENV HCXTOOLS_VERSION       6.1.5
-ENV HCXDUMPTOOL_VERSION    6.1.6
+ENV HCXTOOLS_VERSION       6.2.0
+ENV HCXDUMPTOOL_VERSION    6.2.0
 ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
