@@ -20,7 +20,7 @@ RUN curl -O $INTEL_OPENCL_URL; \
 
 ############### end Intel OpenCL driver installation ###############
 
-ENV HASHCAT_VERSION        v6.2.1
+ENV HASHCAT_VERSION        v6.2.3
 ENV HASHCAT_UTILS_VERSION  v1.9
 ENV HCXTOOLS_VERSION       6.2.0
 ENV HCXDUMPTOOL_VERSION    6.2.0
