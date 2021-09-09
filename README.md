@@ -104,3 +104,17 @@ Along with the hashcat, the following utility packages are installed:
 
 * Warning "Device #1: Unstable OpenCL driver detected!" can be suppressed by adding `--force` flag to the hashcat command (f.i., `hashcat -m2500 -b --force`).
 
+
+## Usages
+
+This Dockerfile is used in [hashcat-wpa-server](https://github.com/dizcza/hashcat-wpa-server) project to automate WPA/WPA2 hashes cracking.
+
+To build upon this Dockerfile with your custom packages, create a new Dockerfile that starts with
+
+```
+ARG branch=latest
+FROM dizcza/docker-hashcat:$branch
+```
+
+The `branch` arg can be any tag listed above.
+
