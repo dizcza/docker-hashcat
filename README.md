@@ -1,22 +1,13 @@
 [![Docker Hub](http://dockeri.co/image/dizcza/docker-hashcat)](https://hub.docker.com/r/dizcza/docker-hashcat/)
 
-[![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat.svg)](https://microbadger.com/images/dizcza/docker-hashcat "GPU")
-[![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat.svg)](https://microbadger.com/images/dizcza/docker-hashcat "GPU")
-
-[![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat:cuda.svg)](https://microbadger.com/images/dizcza/docker-hashcat:cuda "Nvidia GPU")
-[![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:cuda.svg)](https://microbadger.com/images/dizcza/docker-hashcat:cuda "Nvidia GPU")
-
-[![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat:intel-cpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-cpu "Intel CPU")
-[![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:intel-cpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-cpu "Intel CPU")
-
-[![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat:intel-gpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-gpu "Intel NEO GPU")
-[![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:intel-gpu.svg)](https://microbadger.com/images/dizcza/docker-hashcat:intel-gpu "Intel NEO GPU")
-
-[![](https://images.microbadger.com/badges/version/dizcza/docker-hashcat:pocl.svg)](https://microbadger.com/images/dizcza/docker-hashcat:pocl "POCL")
-[![](https://images.microbadger.com/badges/image/dizcza/docker-hashcat:pocl.svg)](https://microbadger.com/images/dizcza/docker-hashcat:pocl "POCL")
+[![](https://img.shields.io/docker/image-size/dizcza/docker-hashcat/latest?label=latest)](https://hub.docker.com/r/dizcza/docker-hashcat/tags)
+[![](https://img.shields.io/docker/image-size/dizcza/docker-hashcat/cuda?label=cuda)](https://hub.docker.com/r/dizcza/docker-hashcat/tags)
+[![](https://img.shields.io/docker/image-size/dizcza/docker-hashcat/intel-cpu?label=intel-cpu)](https://hub.docker.com/r/dizcza/docker-hashcat/tags)
+[![](https://img.shields.io/docker/image-size/dizcza/docker-hashcat/intel-gpu?label=intel-gpu)](https://hub.docker.com/r/dizcza/docker-hashcat/tags)
+[![](https://img.shields.io/docker/image-size/dizcza/docker-hashcat/pocl?label=pocl)](https://hub.docker.com/r/dizcza/docker-hashcat/tags)
 
 
-[Hashcat](https://hashcat.net/hashcat/) with hashcat utils on Ubuntu 18.04 for Nvidia GPUs (`:latest`) and Intel CPUs (`:intel-cpu`).
+[Hashcat](https://hashcat.net/hashcat/) with hashcat utils on Ubuntu 18.04 for Nvidia GPUs (`:cuda`), AMD GPUs (`:latest`), Intel GPUs (`:intel-gpu`), Intel CPUs (`:intel-cpu`), KVMs and AMD CPUs (`:pocl`).
 
 ```
 docker pull dizcza/docker-hashcat
@@ -40,7 +31,7 @@ hashcat -b
 
 `docker pull dizcza/docker-hashcat:latest`
 
-The `:latest` tag is for GPUs. It includes both CUDA and (default) OpenCL backends. Hashcat will pick CUDA, if your hardware supports it, because CUDA is faster than OpenCL (see [thread](https://hashcat.net/forum/thread-9303.html)). If your compute device does not support CUDA, hashcat will fall back to OpenCL backend.
+The `:latest` is a generic tag for both Nvidia and AMD GPUs. It includes CUDA and (default) OpenCL backends. Hashcat will pick CUDA, if your hardware supports it, because CUDA is faster than OpenCL (see [thread](https://hashcat.net/forum/thread-9303.html)). If your compute device does not support CUDA, hashcat will fall back to OpenCL backend.
 
 ### cuda
 
@@ -53,7 +44,8 @@ Recommended for Nvidia GPUs. If you have any issues with running this container 
 
 `docker pull dizcza/docker-hashcat:intel-cpu`
 
-For those who don't have GPUs, use `:intel-cpu` tag (suitable for AWS free tier instances):
+Suitable for Intel CPUs.
+
 
 ### intel-gpu
 
@@ -65,16 +57,9 @@ Intel NEO OpenCL driver (suitable for the majority of laptops with an embedded I
 
 `docker pull dizcza/docker-hashcat:pocl`
 
-An alternative to `:intel-cpu` tag, the `:pocl` tag provides open-source (but not officially supported by HashCat) implementation of OpenCL, which you can find in `pocl-opencl-icd` linux package (usually, outdated). For more information about using POCL in hashcat refer to the [discussion](https://github.com/hashcat/hashcat/issues/2398#issuecomment-628732757).
+An alternative to `:intel-cpu` tag, the `:pocl` tag provides open-source (but not officially supported by HashCat) implementation of OpenCL, which you can find in `pocl-opencl-icd` linux package (usually, outdated). Suitable for Intel & AMD CPUs and KVMs. For more information about using POCL in hashcat refer to the [discussion](https://github.com/hashcat/hashcat/issues/2398#issuecomment-628732757).
 
 Try `:pocl` tag if no other tag worked for you.
-
-
-## Deprecated tags
-
-### nvidia-full
-
-`:nvidia-full` is an old build of the `:latest` tag. This tag is deprecated.
 
 
 ## Benchmark
@@ -111,7 +96,7 @@ This Dockerfile is used in [hashcat-wpa-server](https://github.com/dizcza/hashca
 
 To build upon this Dockerfile with your custom packages, create a new Dockerfile that starts with
 
-```
+```Dockerfile
 ARG branch=latest
 FROM dizcza/docker-hashcat:$branch
 ```
