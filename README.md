@@ -21,7 +21,7 @@ Then inside the docker container run
 # list the available CUDA and OpenCL interfaces
 hashcat -I
 
-# run hashcat bechmark
+# run a bechmark
 hashcat -b
 ```
 
@@ -31,13 +31,13 @@ hashcat -b
 
 `docker pull dizcza/docker-hashcat:latest`
 
-The `:latest` is a generic tag for both Nvidia and AMD GPUs. It includes CUDA and (default) OpenCL backends. Hashcat will pick CUDA, if your hardware supports it, because CUDA is faster than OpenCL (see [thread](https://hashcat.net/forum/thread-9303.html)). If your compute device does not support CUDA, hashcat will fall back to OpenCL backend.
+The `:latest` is a generic tag for both Nvidia and AMD GPUs. It includes CUDA and the (default) OpenCL backends. Hashcat will pick CUDA, if your hardware supports it, because CUDA is faster than OpenCL (see [thread](https://hashcat.net/forum/thread-9303.html)). If your compute device does not support CUDA, hashcat will fall back to the OpenCL backend.
 
 ### cuda
 
 `docker pull dizcza/docker-hashcat:cuda`
 
-Recommended for Nvidia GPUs. If you have any issues with running this container with Nvidia GPU, please drop a comment in this [issue](https://github.com/dizcza/docker-hashcat/issues/6).
+Recommended for Nvidia GPUs. If you have any issues running this container with Nvidia GPU, please drop a comment in this [issue](https://github.com/dizcza/docker-hashcat/issues/6).
 
 
 ### intel-cpu
@@ -57,7 +57,7 @@ Intel NEO OpenCL driver (suitable for the majority of laptops with an embedded I
 
 `docker pull dizcza/docker-hashcat:pocl`
 
-An alternative to `:intel-cpu` tag, the `:pocl` tag provides open-source (but not officially supported by HashCat) implementation of OpenCL, which you can find in `pocl-opencl-icd` linux package (usually, outdated). Suitable for Intel & AMD CPUs and KVMs. For more information about using POCL in hashcat refer to the [discussion](https://github.com/hashcat/hashcat/issues/2398#issuecomment-628732757).
+An alternative to `:intel-cpu` tag, the `:pocl` tag provides an open-source (but not officially supported by HashCat) implementation of OpenCL, which you can find in the `pocl-opencl-icd` linux package (usually, outdated). Suitable for Intel & AMD CPUs and KVMs. For more information about using POCL in hashcat refer to the [discussion](https://github.com/hashcat/hashcat/issues/2398#issuecomment-628732757).
 
 Try `:pocl` tag if no other tag worked for you.
 
@@ -87,12 +87,12 @@ Along with the hashcat, the following utility packages are installed:
 
 ## FAQ
 
-* Warning "Device #1: Unstable OpenCL driver detected!" can be suppressed by adding `--force` flag to the hashcat command (f.i., `hashcat -m2500 -b --force`).
+* Warning "Device #1: Unstable OpenCL driver detected!" can be suppressed by adding the `--force` flag to a hashcat command (f.i., `hashcat -m2500 -b --force`).
 
 
 ## Usages
 
-This Dockerfile is used in [hashcat-wpa-server](https://github.com/dizcza/hashcat-wpa-server) project to automate WPA/WPA2 hashes cracking.
+This Dockerfile is used in the [hashcat-wpa-server](https://github.com/dizcza/hashcat-wpa-server) project to automate WPA/WPA2 hashes cracking.
 
 To build upon this Dockerfile with your custom packages, create a new Dockerfile that starts with
 
