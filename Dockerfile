@@ -5,7 +5,7 @@ LABEL maintainer="Danylo Ulianych"
 RUN apt-get update && \
     apt-get install -y git clang-9 libclang-9-dev build-essential ocl-icd-libopencl1 cmake git pkg-config make ninja-build ocl-icd-libopencl1 ocl-icd-dev ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils
 
-ENV POCL_VERSION           v1.7
+ENV POCL_VERSION           v1.8
 
 WORKDIR /root
 
@@ -15,10 +15,10 @@ RUN git clone https://github.com/pocl/pocl.git && cd pocl && git checkout ${POCL
 
 ##################### end POCL driver installation #####################
 
-ENV HASHCAT_VERSION        v6.2.2
+ENV HASHCAT_VERSION        v6.2.5
 ENV HASHCAT_UTILS_VERSION  v1.9
-ENV HCXTOOLS_VERSION       6.1.5
-ENV HCXDUMPTOOL_VERSION    6.1.6
+ENV HCXTOOLS_VERSION       6.2.5
+ENV HCXDUMPTOOL_VERSION    6.2.5
 ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
