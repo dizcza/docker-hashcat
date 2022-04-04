@@ -21,10 +21,10 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ################################ end nvidia opencl driver ################################
 
-ENV HASHCAT_VERSION        v6.2.3
+ENV HASHCAT_VERSION        v6.2.5
 ENV HASHCAT_UTILS_VERSION  v1.9
-ENV HCXTOOLS_VERSION       6.2.0
-ENV HCXDUMPTOOL_VERSION    6.2.0
+ENV HCXTOOLS_VERSION       6.2.5
+ENV HCXDUMPTOOL_VERSION    6.2.5
 ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
