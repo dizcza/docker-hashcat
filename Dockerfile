@@ -28,7 +28,10 @@ ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
-    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev
+    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev pciutils
+
+# Fetch PCI IDs list to display proper GPU names
+RUN update-pciids
 
 WORKDIR /root
 
