@@ -1,24 +1,18 @@
-FROM ubuntu:18.04
+FROM intel/oneapi-basekit:devel-ubuntu22.04
 
 LABEL maintainer="Danylo Ulianych"
 
-RUN apt-get update && apt-get install -y alien clinfo pkg-config
+# Fix apt update forbidden issue
+RUN rm /etc/apt/sources.list.d/intel-graphics.list
 
-# Install Intel OpenCL driver
-#ENV INTEL_OPENCL_URL=http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/13793/l_opencl_p_18.1.0.013.tgz
-ENV INTEL_OPENCL_URL=http://registrationcenter-download.intel.com/akdlm/irc_nas/9019/opencl_runtime_16.1.1_x64_ubuntu_6.4.0.25.tgz
+# Remove FPGA device support
+RUN rm /opt/intel/oneapi/compiler/2023.0.0/linux/lib/x64/cl.fpga_emu.cfg
+RUN rm -rf /opt/intel/oneapi/compiler/2023.0.0/linux/lib/oclfpga
+RUN rm /etc/OpenCL/vendors/Altera.icd
+RUN rm /etc/OpenCL/vendors/Intel_FPGA_SSG_Emulator.icd
 
-RUN mkdir -p /tmp/opencl-driver-intel
-WORKDIR /tmp/opencl-driver-intel
-RUN curl -O $INTEL_OPENCL_URL; \
-    tar -xzf $(basename $INTEL_OPENCL_URL); \
-    for i in $(basename $INTEL_OPENCL_URL .tgz)/rpm/*.rpm; do alien --to-deb $i; done; \
-    dpkg -i *.deb; \
-    mkdir -p /etc/OpenCL/vendors; \
-    echo /opt/intel/*/lib64/libintelocl.so > /etc/OpenCL/vendors/intel.icd; \
-    rm -rf *
 
-############### end Intel OpenCL driver installation ###############
+RUN apt-get update && apt-get install -y clinfo pkg-config
 
 ENV HASHCAT_VERSION        v6.2.6
 ENV HASHCAT_UTILS_VERSION  v1.9
