@@ -61,6 +61,14 @@ An alternative to `:intel-cpu` tag, the `:pocl` tag provides an open-source (but
 
 Try `:pocl` tag if no other tag worked for you.
 
+## Deprecated tags
+
+### intel-cpu-legacy
+
+`docker pull dizcza/docker-hashcat:intel-cpu-legacy`
+
+The `:intel-cpu-legacy` tag keeps the latest successful build of Hashcat 6.2.6 + deprecated IntelCPU runtime file. Now it's superseded by the `:intel-cpu` tag, which contains up-to-date Intel OpenCL CPU drivers.
+
 
 ## Benchmark
 
