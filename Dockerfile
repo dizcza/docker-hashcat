@@ -1,4 +1,15 @@
-FROM intelopencl/intel-opencl:ubuntu-18.04-ppa
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y clinfo wget
+
+RUN wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.12812.24/intel-igc-core_1.0.12812.24_amd64.deb
+RUN wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.12812.24/intel-igc-opencl_1.0.12812.24_amd64.deb
+RUN wget https://github.com/intel/compute-runtime/releases/download/22.49.25018.24/intel-level-zero-gpu-dbgsym_1.3.25018.24_amd64.ddeb
+RUN wget https://github.com/intel/compute-runtime/releases/download/22.49.25018.24/intel-level-zero-gpu_1.3.25018.24_amd64.deb
+RUN wget https://github.com/intel/compute-runtime/releases/download/22.49.25018.24/intel-opencl-icd-dbgsym_22.49.25018.24_amd64.ddeb
+RUN wget https://github.com/intel/compute-runtime/releases/download/22.49.25018.24/intel-opencl-icd_22.49.25018.24_amd64.deb
+RUN wget https://github.com/intel/compute-runtime/releases/download/22.49.25018.24/libigdgmm12_22.3.0_amd64.deb
+RUN dpkg -i *.deb && rm *.deb
 
 LABEL maintainer="Danylo Ulianych"
 
