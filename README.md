@@ -12,7 +12,7 @@
 ```
 docker pull dizcza/docker-hashcat
 
-nvidia-docker run -it dizcza/docker-hashcat /bin/bash
+docker run --gpus all -it dizcza/docker-hashcat /bin/bash
 ```
 
 Then inside the docker container run
