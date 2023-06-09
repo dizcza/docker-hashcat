@@ -9,6 +9,7 @@
 
 [Hashcat](https://hashcat.net/hashcat/) with hashcat utils on Ubuntu 18.04 for Nvidia GPUs (`:cuda`), AMD GPUs (`:latest`), Intel GPUs (`:intel-gpu`), Intel CPUs (`:intel-cpu`), KVMs and AMD CPUs (`:pocl`).
 
+
 ```
 docker pull dizcza/docker-hashcat
 
@@ -24,6 +25,8 @@ hashcat -I
 # run a bechmark
 hashcat -b
 ```
+
+:point_right: Running RTX 4090 on vast.ai? Refer to the `:cuda` tag below.
 
 ## Tags
 
@@ -93,9 +96,19 @@ Along with the hashcat, the following utility packages are installed:
 * [kwprocessor](https://github.com/hashcat/kwprocessor) for creating advanced keyboard-walk password candidates; info `kwp -h`
 
 
-## FAQ
+## Troubleshooting
 
 * Warning "Device #1: Unstable OpenCL driver detected!" can be suppressed by adding the `--force` flag to a hashcat command (f.i., `hashcat -m2500 -b --force`).
+
+* If you get 
+
+  > docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]].
+
+  while running a docker run command with the `--gpus all` flag enabled, install the nvidia-container-toolkit and restart the docker daemon:
+  ```
+  sudo apt-get install nvidia-container-toolkit
+  sudo systemctl restart docker
+  ```
 
 
 ## Usages
