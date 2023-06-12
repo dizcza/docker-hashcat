@@ -1,11 +1,14 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 LABEL maintainer="Danylo Ulianych"
 
-RUN apt-get update && \
-    apt-get install -y git clang-9 libclang-9-dev build-essential ocl-icd-libopencl1 cmake git pkg-config make ninja-build ocl-icd-libopencl1 ocl-icd-dev ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils
+ENV LLVM_VERSION 15
 
-ENV POCL_VERSION           v1.8
+RUN apt-get update && \
+    apt-get install -y python3-dev libpython3-dev build-essential ocl-icd-libopencl1 cmake git pkg-config libclang-${LLVM_VERSION}-dev clang-${LLVM_VERSION} llvm-${LLVM_VERSION} make ninja-build ocl-icd-libopencl1 ocl-icd-dev ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils libxml2-dev libclang-cpp${LLVM_VERSION}-dev libclang-cpp${LLVM_VERSION} llvm-${LLVM_VERSION}-dev
+
+
+ENV POCL_VERSION           v3.1
 
 WORKDIR /root
 
