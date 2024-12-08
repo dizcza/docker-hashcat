@@ -16,13 +16,13 @@ LABEL maintainer="Danylo Ulianych"
 
 ENV HASHCAT_VERSION        v6.2.6
 ENV HASHCAT_UTILS_VERSION  v1.9
-ENV HCXTOOLS_VERSION       6.2.7
-ENV HCXDUMPTOOL_VERSION    6.2.7
+ENV HCXTOOLS_VERSION       6.3.5
+ENV HCXDUMPTOOL_VERSION    6.3.5
 ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
-    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev pkg-config pciutils
+    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev pkg-config pciutils libpcap0.8-dev
 RUN apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 # Fetch PCI IDs list to display proper GPU names
