@@ -26,7 +26,24 @@ hashcat -I
 hashcat -b
 ```
 
-:point_right: Running RTX 4090 on vast.ai? Refer to the `:cuda` tag below.
+:point_right: Running RTX 5000 on vast.ai? Refer to the `:cuda` tag below.
+
+## Troubleshooting
+
+* If you get the `nvrtcCompileProgram(): NVRTC_ERROR_INVALID_OPTION` error, switch to the OpenCL backend by adding `-d 2` to your command line: `hashcat -b -d 2`.
+
+* Warning "Device #1: Unstable OpenCL driver detected!" can be suppressed by adding the `--force` flag to a hashcat command (f.i., `hashcat -m2500 -b --force`).
+
+* If you get 
+
+  > docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]].
+
+  while running a docker run command with the `--gpus all` flag enabled, install the nvidia-container-toolkit and restart the docker daemon:
+  ```
+  sudo apt-get install nvidia-container-toolkit
+  sudo systemctl restart docker
+  ```
+
 
 ## Tags
 
@@ -94,21 +111,6 @@ Along with the hashcat, the following utility packages are installed:
 * [hcxtools](https://github.com/zerbea/hcxtools) for inspecting, filtering, and converting capture files;
 * [hcxdumptool](https://github.com/ZerBea/hcxdumptool) for capturing packets from wlan devices in any format you might think of; info `hcxdumptool -h`
 * [kwprocessor](https://github.com/hashcat/kwprocessor) for creating advanced keyboard-walk password candidates; info `kwp -h`
-
-
-## Troubleshooting
-
-* Warning "Device #1: Unstable OpenCL driver detected!" can be suppressed by adding the `--force` flag to a hashcat command (f.i., `hashcat -m2500 -b --force`).
-
-* If you get 
-
-  > docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]].
-
-  while running a docker run command with the `--gpus all` flag enabled, install the nvidia-container-toolkit and restart the docker daemon:
-  ```
-  sudo apt-get install nvidia-container-toolkit
-  sudo systemctl restart docker
-  ```
 
 
 ## Usages
