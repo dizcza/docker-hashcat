@@ -1,28 +1,19 @@
-FROM intel/oneapi-basekit:devel-ubuntu22.04
+FROM intel/oneapi-basekit:latest
 
 LABEL maintainer="Danylo Ulianych"
 
 # Fix apt update forbidden issue
 RUN rm /etc/apt/sources.list.d/intel-graphics.list
 
-# Remove FPGA device support
-RUN rm /opt/intel/oneapi/compiler/2023.0.0/linux/lib/x64/cl.fpga_emu.cfg
-RUN rm -rf /opt/intel/oneapi/compiler/2023.0.0/linux/lib/oclfpga
-RUN rm /etc/OpenCL/vendors/Altera.icd
-RUN rm /etc/OpenCL/vendors/Intel_FPGA_SSG_Emulator.icd
-
-
-RUN apt-get update && apt-get install -y clinfo pkg-config
-
-ENV HASHCAT_VERSION        v6.2.6
+ENV HASHCAT_VERSION        master
 ENV HASHCAT_UTILS_VERSION  v1.9
-ENV HCXTOOLS_VERSION       6.2.7
-ENV HCXDUMPTOOL_VERSION    6.2.7
+ENV HCXTOOLS_VERSION       6.3.5
+ENV HCXDUMPTOOL_VERSION    6.3.5
 ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
-    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev pciutils
+    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev pciutils pkg-config libpcap-dev
 
 # Fetch PCI IDs list to display proper GPU names
 RUN update-pciids
