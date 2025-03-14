@@ -2,19 +2,21 @@ FROM ubuntu:22.04
 
 RUN apt-get update && apt-get install -y clinfo wget
 
-RUN wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.12812.24/intel-igc-core_1.0.12812.24_amd64.deb
-RUN wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.12812.24/intel-igc-opencl_1.0.12812.24_amd64.deb
-RUN wget https://github.com/intel/compute-runtime/releases/download/22.49.25018.24/intel-level-zero-gpu-dbgsym_1.3.25018.24_amd64.ddeb
-RUN wget https://github.com/intel/compute-runtime/releases/download/22.49.25018.24/intel-level-zero-gpu_1.3.25018.24_amd64.deb
-RUN wget https://github.com/intel/compute-runtime/releases/download/22.49.25018.24/intel-opencl-icd-dbgsym_22.49.25018.24_amd64.ddeb
-RUN wget https://github.com/intel/compute-runtime/releases/download/22.49.25018.24/intel-opencl-icd_22.49.25018.24_amd64.deb
-RUN wget https://github.com/intel/compute-runtime/releases/download/22.49.25018.24/libigdgmm12_22.3.0_amd64.deb
+# Taken from https://github.com/intel/compute-runtime/releases
+RUN wget https://github.com/intel/intel-graphics-compiler/releases/download/v2.7.11/intel-igc-core-2_2.7.11+18581_amd64.deb
+RUN wget https://github.com/intel/intel-graphics-compiler/releases/download/v2.7.11/intel-igc-opencl-2_2.7.11+18581_amd64.deb
+RUN wget https://github.com/intel/compute-runtime/releases/download/25.05.32567.17/intel-level-zero-gpu-dbgsym_1.6.32567.17_amd64.ddeb
+RUN wget https://github.com/intel/compute-runtime/releases/download/25.05.32567.17/intel-level-zero-gpu_1.6.32567.17_amd64.deb
+RUN wget https://github.com/intel/compute-runtime/releases/download/25.05.32567.17/intel-opencl-icd-dbgsym_25.05.32567.17_amd64.ddeb
+RUN wget https://github.com/intel/compute-runtime/releases/download/25.05.32567.17/intel-opencl-icd_25.05.32567.17_amd64.deb
+RUN wget https://github.com/intel/compute-runtime/releases/download/25.05.32567.17/libigdgmm12_22.6.0_amd64.deb
+
 RUN dpkg -i *.deb && rm *.deb
 
 LABEL maintainer="Danylo Ulianych"
 
 
-ENV HASHCAT_VERSION        v6.2.6
+ENV HASHCAT_VERSION        master
 ENV HASHCAT_UTILS_VERSION  v1.9
 ENV HCXTOOLS_VERSION       6.3.5
 ENV HCXDUMPTOOL_VERSION    6.3.5
@@ -22,7 +24,7 @@ ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
-    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev pkg-config pciutils libpcap0.8-dev
+    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev pkg-config pciutils libpcap-dev
 RUN apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 # Fetch PCI IDs list to display proper GPU names
