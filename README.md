@@ -2,6 +2,7 @@
 
 [![](https://img.shields.io/docker/image-size/dizcza/docker-hashcat/latest?label=latest)](https://hub.docker.com/r/dizcza/docker-hashcat/tags)
 [![](https://img.shields.io/docker/image-size/dizcza/docker-hashcat/cuda?label=cuda)](https://hub.docker.com/r/dizcza/docker-hashcat/tags)
+[![](https://img.shields.io/docker/image-size/dizcza/docker-hashcat/pocl?label=cuda12.1)](https://hub.docker.com/r/dizcza/docker-hashcat/tags)
 [![](https://img.shields.io/docker/image-size/dizcza/docker-hashcat/intel-cpu?label=intel-cpu)](https://hub.docker.com/r/dizcza/docker-hashcat/tags)
 [![](https://img.shields.io/docker/image-size/dizcza/docker-hashcat/intel-gpu?label=intel-gpu)](https://hub.docker.com/r/dizcza/docker-hashcat/tags)
 [![](https://img.shields.io/docker/image-size/dizcza/docker-hashcat/pocl?label=pocl)](https://hub.docker.com/r/dizcza/docker-hashcat/tags)
@@ -59,6 +60,11 @@ The `:latest` is a generic tag for both Nvidia and AMD GPUs. It includes CUDA an
 
 Recommended for Nvidia GPUs. If you have any issues running this container with Nvidia GPU, please drop a comment in this [issue](https://github.com/dizcza/docker-hashcat/issues/6).
 
+### cuda12.1
+
+`docker pull dizcza/docker-hashcat:cuda12.1`
+
+For old Nvidia GPU cards, if the `cuda` tag doesn't work, use the `cuda12.1` tag.
 
 ### intel-cpu
 
