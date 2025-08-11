@@ -5,7 +5,7 @@ LABEL maintainer="Danylo Ulianych"
 # Fix apt update forbidden issue
 RUN rm /etc/apt/sources.list.d/intel-graphics.list
 
-ENV HASHCAT_VERSION        master
+ENV HASHCAT_VERSION        v7.0.0
 ENV HASHCAT_UTILS_VERSION  v1.9
 ENV HCXTOOLS_VERSION       6.3.5
 ENV HCXDUMPTOOL_VERSION    6.3.5
