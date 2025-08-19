@@ -16,7 +16,7 @@ RUN dpkg -i *.deb && rm *.deb
 LABEL maintainer="Danylo Ulianych"
 
 
-ENV HASHCAT_VERSION        v7.0.0
+ENV HASHCAT_VERSION        v7.1.1
 ENV HASHCAT_UTILS_VERSION  v1.9
 ENV HCXTOOLS_VERSION       6.3.5
 ENV HCXDUMPTOOL_VERSION    6.3.5
